@@ -1,15 +1,28 @@
-import JsonConvertor
+from JsonConverter import JsonDumper
+from JsonConverter import JsonLoader
 
 class CommandRequest:
-    endpoint: str # Endpoint, need to add later
+    uri: str
     parameters: dict
     id: int
 
-    def __init__(self, endpoint: str, parameters: dict):
-        self.endpoint = endpoint
+    def __init__(self, uri: str, parameters: dict, id: int = 0):
+        self.uri = uri
         self.parameters = parameters
-        self.id = 0 # need to link to database
+        self.id = id # need to link to database
 
     def dump(self) -> bytes:
-        return JsonConvertor.convert_custom_instance(self)
+        return JsonDumper.convert_custom_instance(self)
+
+    @staticmethod
+    def load(command_request_json: bytes) -> "CommandRequest":
+        decoded_dict = JsonLoader.convert_dict(command_request_json)
+        attributes = {"uri": str, "parameters": dict, "id": int}
+        decoded_values = dict()
+        for attr, attr_type in attributes.items():
+            if attr in decoded_dict and isinstance(decoded_dict[attr], attr_type):
+                decoded_values[attr] = decoded_dict[attr]
+            else:
+                raise ValueError(f"Couldn't cast item with the key of {attr}")
+        return CommandRequest(uri=decoded_values["uri"], parameters=decoded_values["parameters"], id=decoded_values["id"])
 

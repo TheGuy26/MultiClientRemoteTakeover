@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MultiClientRemoteTakeover.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CommandRequest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JsonConverter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJsonConverter.py" afterDir="false" />
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added Json converter, and started working on CommandRequest class.">
+      <change afterPath="$PROJECT_DIR$/CommandResponse.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JsonConverter/JsonLoader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JsonConverter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommandRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommandRequest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JsonConvertor.py" beforeDir="false" afterPath="$PROJECT_DIR$/JsonConverter/JsonDumper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestJsonConverter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +28,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TheGuy26&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TheGuy26/MultiClientRemoteTakeover.git&quot;,
+    &quot;accountId&quot;: &quot;db511ae9-ce91-4bd0-b51e-a161bbf5b9d5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="3I5ht85eepaP77r7hBzHdYFpXUU" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,12 +54,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.TestJsonConverter.executor": "Debug",
+    "Python.CommandResponse.executor": "Debug",
+    "Python.TestJsonConverter.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\JsonConverter" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -64,25 +81,49 @@
       <option name="presentableId" value="Default" />
       <updated>1787060548321</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added Json converter, and started working on CommandRequest class.">
+      <option name="closed" value="true" />
+      <created>1787067871494</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787067871494</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Json converter, and started working on CommandRequest class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Json converter, and started working on CommandRequest class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/JsonConverter.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/JsonConverter/JsonDumper.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/JsonConverter.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/CommandRequest.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/JsonConverter.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/JsonConverter/JsonLoader.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

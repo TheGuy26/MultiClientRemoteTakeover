@@ -5,8 +5,6 @@ def convert_str(string: str) -> bytes:
     return f'"{string}"'.encode()
 
 def convert_bool(boolean: bool) -> bytes:
-    test = str(boolean)
-    test2 = test.lower()
     return str(boolean).lower().encode()
 
 def convert_basic(item: int | float | str | bool | None) -> bytes:
