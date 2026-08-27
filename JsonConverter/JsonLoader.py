@@ -30,12 +30,13 @@ def convert_basic (value: bytes) -> int | float | str | bool | None:
         raise ValueError("Couldn't convert value.")
 
 def convert_array(array: bytes) -> list:
-    seperator = b', '
+    seperator = b','
     encoded_list = array[1:-1].split(seperator) # Remove array first and last chars ('[' ']')
     merge_iterable_values(item_list=encoded_list, seperator=seperator)
     decoded_list = list()
     try:
         for value in encoded_list:
+            value = value.strip() # Remove any whitespace
             if value[:1] == b'[':
                 decoded_list.append(convert_array(value))
             elif value[:1] == b'{':
@@ -48,13 +49,12 @@ def convert_array(array: bytes) -> list:
 
 
 def convert_dict(dictionary: bytes) -> dict:
-    dictionary = dictionary.replace(b'\t', b'')
-    dictionary = dictionary.replace(b'\n', b'')
     decoded_dict = dict()
     seperator = b','
     encoded_items = dictionary[1:-1].split(seperator)
     merge_iterable_values(item_list=encoded_items, seperator=seperator)
     for item in encoded_items:
+        item = item.strip() # Remove any whitespace
         separated_item = item.split(b': ', maxsplit=1)
         value = separated_item[-1]
         try:
