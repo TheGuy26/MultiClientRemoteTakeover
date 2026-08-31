@@ -1,5 +1,5 @@
-from JsonConverter import JsonDumper
-from JsonConverter import JsonLoader
+from JsonConverter import jsonDumper
+from JsonConverter import jsonLoader
 
 class CommandRequest:
     uri: str
@@ -9,14 +9,14 @@ class CommandRequest:
     def __init__(self, uri: str, parameters: dict, id: int = 0):
         self.uri = uri
         self.parameters = parameters
-        self.id = id # need to link to database
+        self.id = id
 
     def dump(self) -> bytes:
-        return JsonDumper.convert_custom_instance(self)
+        return jsonDumper.convert_custom_instance(instance=self)
 
     @staticmethod
     def load(command_request_json: bytes) -> "CommandRequest":
-        decoded_dict = JsonLoader.convert_dict(command_request_json)
+        decoded_dict = jsonLoader.convert_dict(command_request_json)
         attributes = {"uri": str, "parameters": dict, "id": int}
         decoded_values = dict()
         for attr, attr_type in attributes.items():
