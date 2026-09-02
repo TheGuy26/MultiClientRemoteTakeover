@@ -1,5 +1,5 @@
-from JsonConverter import jsonDumper
-from JsonConverter import jsonLoader
+from backend.JsonConverter import jsonDumper
+from backend.JsonConverter import jsonLoader
 
 class CommandRequest:
     uri: str

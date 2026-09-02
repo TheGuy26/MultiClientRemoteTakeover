@@ -2,8 +2,8 @@ import time
 from time import sleep
 import socket
 from threading import Thread, Event
-from commandRequest import CommandRequest
-from commandResponse import CommandResponse
+from backend.commandRequest import CommandRequest
+from backend.commandResponse import CommandResponse
 
 
 class Client:
@@ -23,10 +23,10 @@ class Client:
         self.client_socket = client_socket
         self.current_id = 1
         self.is_alive = True
-        self.should_keep_alive: Event()
+        self.should_keep_alive = Event()
         self.should_keep_alive.set()
-        self.can_send_request: Event()
-        self.running_thread = Thread(target=self.keep_alive, daemon=True)
+        self.can_send_request = Event()
+        self.running_thread = Thread(target=self.keep_alive(), daemon=False)
         self.running_thread.start()
 
     def send_request(self, uri: str, parameters: dict) -> CommandResponse:
@@ -48,7 +48,7 @@ class Client:
             self.client_socket.sendall(b'Is alive?')
             try:
                 self.client_socket.settimeout(5.0)
-                self.client_socket.recv(1024)
+                message = self.client_socket.recv(1024)
             except socket.timeout:
                 self.is_alive = False
                 #Update GUI
@@ -56,5 +56,5 @@ class Client:
 
             self.client_socket.settimeout(None)
             self.can_send_request.set()
-            time.sleep(10.0)
+            time.sleep(30.0)
 

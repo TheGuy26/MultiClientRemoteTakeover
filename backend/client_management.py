@@ -1,7 +1,7 @@
 import socket
 from threading import Thread
 
-from client import Client
+from backend.client import Client
 
 class ClientManagement:
     clients: set[Client]
@@ -10,7 +10,7 @@ class ClientManagement:
 
     def __init__(self, ip: str, port: int):
         self.clients = set()
-        self.running_thread = Thread(target=self.listen, daemon=True)
+        self.running_thread = Thread(target=self.listen, daemon=False) # Change to True
         self.server_socket = socket.socket()
         try:
             self.server_socket.bind((ip, port))

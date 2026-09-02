@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added Json converter, and started working on CommandRequest class.">
-      <change afterPath="$PROJECT_DIR$/CommandResponse.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JsonConverter/JsonLoader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JsonConverter/__init__.py" afterDir="false" />
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="General Changes">
+      <change afterPath="$PROJECT_DIR$/ClientSpecific/management.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/JsonConverter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/controls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/styling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommandRequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JsonConvertor.py" beforeDir="false" afterPath="$PROJECT_DIR$/JsonConverter/JsonDumper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestJsonConverter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JsonConverter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientSpecific/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JsonConverter/jsonDumper.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/JsonConverter/jsonDumper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JsonConverter/jsonLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commandRequest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandResponse.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commandResponse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/endpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/endpoint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,14 +68,21 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.CommandResponse.executor": "Debug",
-    "Python.TestJsonConverter.executor": "Run",
+    "Python.TestJsonConverter.executor": "Debug",
+    "Python.client.executor": "Run",
+    "Python.page.executor": "Run",
+    "Python.run.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
+      <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover" />
+      <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend" />
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\JsonConverter" />
     </key>
   </component>
@@ -89,7 +109,79 @@
       <option name="project" value="LOCAL" />
       <updated>1787067871494</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- Added JsonLoader.(*ongoing work)&#10;- Added load func to CommandRequest.&#10;- Placed Json dumper and loader in JsonConverter package.">
+      <option name="closed" value="true" />
+      <created>1787602642933</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787602642934</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed JsonLoader.py">
+      <option name="closed" value="true" />
+      <created>1787832853350</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787832853350</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added CommandResponse class">
+      <option name="closed" value="true" />
+      <created>1787834780962</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787834780962</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added endpoint class">
+      <option name="closed" value="true" />
+      <created>1788173595537</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1788173595537</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added API class">
+      <option name="closed" value="true" />
+      <created>1788173609164</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1788173609164</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed CommandResponse body typing">
+      <option name="closed" value="true" />
+      <created>1788174592679</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1788174592679</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Client class">
+      <option name="closed" value="true" />
+      <created>1788188400456</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1788188400456</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added ClientManagement class">
+      <option name="closed" value="true" />
+      <created>1788188425495</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1788188425495</updated>
+    </task>
+    <task id="LOCAL-00010" summary="General Changes">
+      <option name="closed" value="true" />
+      <created>1788188462606</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1788188462606</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,25 +197,59 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added Json converter, and started working on CommandRequest class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Json converter, and started working on CommandRequest class." />
+    <MESSAGE value="- Added JsonLoader.(*ongoing work)&#10;- Added load func to CommandRequest.&#10;- Placed Json dumper and loader in JsonConverter package." />
+    <MESSAGE value="Fixed JsonLoader.py" />
+    <MESSAGE value="Added CommandResponse class" />
+    <MESSAGE value="Added endpoint class" />
+    <MESSAGE value="Added API class" />
+    <MESSAGE value="Fixed CommandResponse body typing" />
+    <MESSAGE value="Added Client class" />
+    <MESSAGE value="Added ClientManagement class" />
+    <MESSAGE value="General Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="General Changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/JsonConverter/JsonDumper.py</url>
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonDumper.py</url>
           <line>51</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/CommandRequest.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/JsonConverter/JsonLoader.py</url>
-          <line>34</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/client.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/client_management.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/client.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/client.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

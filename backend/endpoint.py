@@ -1,6 +1,6 @@
 from typing import Callable
-from commandResponse import CommandResponse
-from commandRequest import CommandRequest
+from backend.commandResponse import CommandResponse
+from backend.commandRequest import CommandRequest
 
 
 class Endpoint:
