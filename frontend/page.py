@@ -12,10 +12,10 @@ class Page:
         self.page: ft.Page | None = None
         self.panel: ft.Column | None = None
 
-        self.commands = [controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST1", uri="TEST", fields_titles={"first", "second"}, send_request=self.send_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST2", uri="TEST", fields_titles={"first", "second"}, send_request=self.send_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields_titles={"first", "second"}, send_request=self.send_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields_titles={"first", "second"}, send_request=self.send_request)]
+        self.commands = [controls.FileTransferCommandPanel(send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST2", uri="TEST", fields_titles=["first", "second"], send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields_titles=["first", "second"], send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields_titles=["first", "second"], send_request=self.send_request)]
         self.command_grid = ft.ResponsiveRow(columns=12, spacing=10, controls=self.commands)
 
 
@@ -30,7 +30,6 @@ class Page:
         self.panel = ft.Column(alignment=ft.MainAxisAlignment.START, horizontal_alignment=ft.CrossAxisAlignment.START,
                                expand=True)
 
-        self.panel.controls.append(self.command_grid.controls[0])
         self.panel.controls.append(self.command_grid)
 
 
