@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="General Changes">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added host list in frontend.">
       <change afterPath="$PROJECT_DIR$/ClientSpecific/management.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/JsonConverter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/controls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/styling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JsonConverter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClientSpecific/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JsonConverter/jsonDumper.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/JsonConverter/jsonDumper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JsonConverter/jsonLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client_management.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commandRequest.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commandRequest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commandResponse.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commandResponse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/endpoint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,20 +52,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.CommandResponse.executor": "Debug",
-    "Python.TestJsonConverter.executor": "Debug",
-    "Python.client.executor": "Run",
-    "Python.page.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.CommandResponse.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.TestJsonConverter.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
@@ -181,7 +170,55 @@
       <option name="project" value="LOCAL" />
       <updated>1788188462606</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Started working on GUI&#10;working on command control for GUI">
+      <option name="closed" value="true" />
+      <created>1788382818044</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1788382818044</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Organized to packages and fixed imports">
+      <option name="closed" value="true" />
+      <created>1788382938920</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1788382938920</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added specific file transfer command panel class.">
+      <option name="closed" value="true" />
+      <created>1788713740893</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1788713740893</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixed compatibility with CommandResponse.py">
+      <option name="closed" value="true" />
+      <created>1792149715567</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1792149715568</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed new thread creation and keep_alive method.">
+      <option name="closed" value="true" />
+      <created>1792149823901</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1792149823901</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added host list in frontend.">
+      <option name="closed" value="true" />
+      <created>1792149917792</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1792149917792</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +243,13 @@
     <MESSAGE value="Added Client class" />
     <MESSAGE value="Added ClientManagement class" />
     <MESSAGE value="General Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="General Changes" />
+    <MESSAGE value="Started working on GUI&#10;working on command control for GUI" />
+    <MESSAGE value="Organized to packages and fixed imports" />
+    <MESSAGE value="Added specific file transfer command panel class." />
+    <MESSAGE value="fixed compatibility with CommandResponse.py" />
+    <MESSAGE value="Fixed new thread creation and keep_alive method." />
+    <MESSAGE value="Added host list in frontend." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added host list in frontend." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -232,24 +275,14 @@
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/client.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="48" />
+          <url>file://$PROJECT_DIR$/frontend/controls.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/client_management.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/client.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/client.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="51" />
+          <line>31</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
