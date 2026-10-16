@@ -26,9 +26,9 @@ class API:
     def respond(self, request: CommandRequest) -> CommandResponse:
         key = request.uri
         if key not in self.endpoints.keys():
-            return CommandResponse(request_id=request.id, status_code=404, body_type="str", body="Not Found")
+            return CommandResponse(request_id=request.id, status_code=404, body="Not Found")
         endpoint = self.endpoints[key]
         try:
             return endpoint.Call(request=request)
         except Exception:
-            return CommandResponse(request_id=request.id, status_code=504, body_type="str", body="Internal Server Error")
+            return CommandResponse(request_id=request.id, status_code=504, body="Internal Server Error")
