@@ -1,4 +1,3 @@
-from backend.client_management import ClientManagement
 from frontend.page import Page
 
 def run():
