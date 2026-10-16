@@ -1,15 +1,18 @@
 import socket
 from threading import Thread
+from typing import Callable
 
 from backend.client import Client
 
 class ClientManagement:
-    clients: set[Client]
+    clients: dict[str, Client] # ip as key
     server_socket: socket.socket
     running_thread: Thread
 
-    def __init__(self, ip: str, port: int):
-        self.clients = set()
+    add_to_frontend: Callable
+
+    def __init__(self, ip: str, port: int, add_to_frontend: Callable):
+        self.clients = dict()
         self.running_thread = Thread(target=self.listen, daemon=False) # Change to True
         self.server_socket = socket.socket()
         try:
@@ -18,10 +21,20 @@ class ClientManagement:
             raise ValueError(f"Server couldn't bind to address ({ip}, {port})")
         self.running_thread.start()
 
+        self.add_to_frontend = add_to_frontend
+
     def listen(self):
         self.server_socket.listen()
         while True:
-            client_socket = self.server_socket.accept()[0]
+            client_socket, client_address = self.server_socket.accept()
             client = Client(client_socket=client_socket)
-            self.clients.add(client)
+            self.clients[client_address[0]] = client
+            self.add_to_frontend(ip=client_address[0], port=client_address[1])
+
+
+    def get_client(self, ip: str) -> Client:
+        if ip in self.clients.keys():
+            return self.clients[ip]
+        raise ValueError(f"Client with the ip of {ip} couldn't be found.")
+
 
