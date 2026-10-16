@@ -26,7 +26,7 @@ class Client:
         self.should_keep_alive = Event()
         self.should_keep_alive.set()
         self.can_send_request = Event()
-        self.running_thread = Thread(target=self.keep_alive(), daemon=False)
+        self.running_thread = Thread(target=self.keep_alive, daemon=False)
         self.running_thread.start()
 
     def send_request(self, uri: str, parameters: dict) -> CommandResponse:
@@ -53,6 +53,7 @@ class Client:
                 self.is_alive = False
                 #Update GUI
                 self.client_socket.close()
+                break
 
             self.client_socket.settimeout(None)
             self.can_send_request.set()
