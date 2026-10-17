@@ -15,6 +15,7 @@ class Management:
             host.connect((ip, port))
         except OSError:
             raise RuntimeError(f"Couldn't connect to {ip}:{port}")
+        print("Connected successfully")
         self.host = host
         self.api = commands.set_api(self.host)
         self.listen()
