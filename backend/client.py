@@ -1,5 +1,4 @@
 import time
-from time import sleep
 import socket
 from threading import Thread, Event
 from backend.commandRequest import CommandRequest
@@ -29,7 +28,7 @@ class Client:
         self.running_thread = Thread(target=self.keep_alive, daemon=False)
         self.running_thread.start()
 
-    def send_request(self, uri: str, parameters: dict) -> CommandResponse:
+    def send_request(self, uri: str, parameters: dict, continue_keeping_alive: bool = True) -> CommandResponse:
         self.can_send_request.wait()
         self.should_keep_alive.clear()
         command_request = CommandRequest(uri=uri, parameters=parameters, id=self.current_id)
@@ -37,7 +36,8 @@ class Client:
         buffer = 8192 # Add BHP
         encoded_response = self.client_socket.recv(buffer)
         self.current_id += 1
-        self.should_keep_alive.set()
+        if continue_keeping_alive:
+            self.should_keep_alive.set()
         return CommandResponse.load(encoded_response)
 
 
@@ -47,9 +47,9 @@ class Client:
             self.can_send_request.clear()
             self.client_socket.sendall(b'Is alive?')
             try:
-                self.client_socket.settimeout(5.0)
+                self.client_socket.settimeout(25.0)
                 message = self.client_socket.recv(1024)
-            except socket.timeout:
+            except socket.timeout | ConnectionError:
                 self.is_alive = False
                 #Update GUI
                 self.client_socket.close()
@@ -59,3 +59,10 @@ class Client:
             self.can_send_request.set()
             time.sleep(30.0)
 
+
+    def stop_keeping_alive(self):
+        self.can_send_request.wait() # Wait until finished sending keep alive message
+        self.should_keep_alive.clear()
+
+    def continue_keeping_alive(self):
+        self.should_keep_alive.set()
