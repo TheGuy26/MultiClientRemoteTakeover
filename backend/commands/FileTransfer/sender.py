@@ -1,7 +1,7 @@
 import socket
 import pathlib
 
-from backend.commandRequest import CommandRequest
+from backend.commandResponse import CommandResponse
 from backend.client import Client
 
 def transfer(source_path: str, host: socket.socket):
@@ -29,11 +29,10 @@ def send(source_path: str, host: Client, destination_path: str, file_name: str):
     if not check_if_exists(source_path):
         return # update GUI
     file_size, file_extension = get_size(source_path), get_extension(source_path)
-    parameters = {"destination_path": destination_path, "file_size": file_size}
-    check_response = host.send_request(uri="receive_precheck", parameters=parameters)
+    parameters = {"destination_path": destination_path, "file_size": file_size,
+                  "file_name": (file_name + file_extension)}
+    check_response = host.send_request(uri="receive", parameters=parameters)
     if check_response.status_code != 1:
         return # update GUI
     transfer(source_path, host.client_socket)
-    parameters["file_name"] = (file_name + file_extension)
-    host.send_request(uri="receive", parameters=parameters)
-
+    return # update GUI

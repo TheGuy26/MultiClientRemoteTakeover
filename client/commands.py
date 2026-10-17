@@ -11,7 +11,6 @@ def set_api(host: socket.socket) -> API:
 
     # endpoints:
     endpoints = [
-    Endpoint(uri="receive_precheck", endpoint=file_transfer.receive_precheck, basic=False),
     Endpoint(uri="receive", endpoint=file_transfer.receive, basic=False)
     ]
 
