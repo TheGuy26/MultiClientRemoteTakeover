@@ -1,7 +1,7 @@
 import socket
 
-from sender import send
-from receiver import receive, receive_precheck
+from backend.commands.FileTransfer.sender import send
+from backend.commands.FileTransfer.receiver import receive, receive_precheck
 from backend.commandResponse import CommandResponse
 
 class FileTransfer:

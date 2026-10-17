@@ -1,6 +1,6 @@
-from commandRequest import CommandRequest
-from commandResponse import CommandResponse
-from endpoint import Endpoint
+from backend.commandRequest import CommandRequest
+from backend.commandResponse import CommandResponse
+from backend.endpoint import Endpoint
 
 
 class API:
