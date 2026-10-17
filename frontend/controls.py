@@ -68,7 +68,7 @@ class FileTransferCommandPanel(CommandPanel):
         self.set_text()
         self.swap_button = ft.IconButton(icon=ft.Icons.SWAP_VERT_ROUNDED, bgcolor="#5ce07f", on_click=self.swap_text)
 
-        super().__init__(icon=ft.Icons.DRIVE_FILE_MOVE_ROUNDED, name="File Transfer", uri="transfer",
+        super().__init__(icon=ft.Icons.DRIVE_FILE_MOVE_ROUNDED, name="File Transfer", uri="receive",
                          fields={"source_path": "source", "destination_path": "destination", "file_name": "name"},
                          send_request=send_request)
 
@@ -87,9 +87,12 @@ class FileTransferCommandPanel(CommandPanel):
 
     @override
     def send(self, e, parameters: dict[str: str] = None):
-        source = self.text_sections[0].content.value
-        parameters = {"source": source}
-        super().send(e, parameters)
+        destination = self.text_sections[1].content.value
+        if destination == "Client's PC":
+            self.uri = "receive" # uri is the action that the client does
+        else:
+            self.uri = "send"
+        super().send(e)
 
 class HostPanel(ft.Container):
     ip: ft.Text

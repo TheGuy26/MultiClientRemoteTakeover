@@ -10,9 +10,13 @@ def set_api(host: socket.socket) -> API:
     file_transfer = FileTransfer(host)
 
     # endpoints:
-    receive = Endpoint(uri="receive", endpoint=file_transfer.receive, basic=False)
+    endpoints = [
+    Endpoint(uri="receive_precheck", endpoint=file_transfer.receive_precheck, basic=False),
+    Endpoint(uri="receive", endpoint=file_transfer.receive, basic=False)
+    ]
 
     # API:
     api = API()
-    api.add(receive)
+    for endpoint in endpoints:
+        api.add(endpoint)
     return api

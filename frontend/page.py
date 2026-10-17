@@ -2,6 +2,7 @@ import flet as ft
 from frontend import controls
 from backend.client_management import ClientManagement
 from backend.client import Client
+from backend.commands.FileTransfer import sender
 
 class Page:
     page: ft.Page
@@ -19,7 +20,7 @@ class Page:
         self.page: ft.Page | None = None
         self.panel: ft.Row | None = None
 
-        self.commands = [controls.FileTransferCommandPanel(send_request=self.send_request),
+        self.commands = [controls.FileTransferCommandPanel(send_request=self.send_file_transfer_request),
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST2", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request),
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request),
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request)]
@@ -52,6 +53,14 @@ class Page:
 
     def send_request(self, uri: str, parameters: dict):
         pass
+
+    def send_file_transfer_request(self, uri:str, parameters: dict):
+        if self.current_client is None:
+            return # update GUI
+        if uri == "receive":
+            sender.send(host=self.current_client, **parameters)
+        else:
+            return
 
     def add_client(self, ip: str, port: int):
         self.host_list.add(ip=ip, port=port)

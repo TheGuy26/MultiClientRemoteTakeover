@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Removed unnecessary import statement.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="xml file commit">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/file_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/file_transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/controls.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792153345647</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="xml file commit">
+      <option name="closed" value="true" />
+      <created>1792154474566</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1792154474566</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +294,8 @@
     <MESSAGE value="Started working on client (worker) side." />
     <MESSAGE value="Continued working on file transfer command." />
     <MESSAGE value="Removed unnecessary import statement." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary import statement." />
+    <MESSAGE value="xml file commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml file commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -304,16 +319,6 @@
           <url>file://$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py</url>
           <line>35</line>
           <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/frontend/controls.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/client_management.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

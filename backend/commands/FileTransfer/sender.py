@@ -7,14 +7,8 @@ from backend.client import Client
 def transfer(source_path: str, host: socket.socket):
         file_path = pathlib.Path(source_path)
         buffer = 1024
-        response = host.recv(buffer).decode()
-        if int(response) != 1:
-            pass # update GUI
         file_data = file_path.read_bytes()
-        host.sendall(file_data)
-        response = host.recv(buffer).decode()
-        if int(response) != 1:
-            pass  # update GUI
+        host.sendall(file_data + b'<end>')
 
 def check_if_exists(source_path: str) -> bool:
     file_path = pathlib.Path(source_path)
@@ -35,8 +29,11 @@ def send(source_path: str, host: Client, destination_path: str, file_name: str):
     if not check_if_exists(source_path):
         return # update GUI
     file_size, file_extension = get_size(source_path), get_extension(source_path)
+    parameters = {"destination_path": destination_path, "file_size": file_size}
+    check_response = host.send_request(uri="receive_precheck", parameters=parameters)
+    if check_response.status_code != 1:
+        return # update GUI
     transfer(source_path, host.client_socket)
-
-    parameters = {"destination_path": destination_path, "file_size": file_size, "file_name": (file_name + file_extension)}
-    host.send_request(uri="send", parameters=parameters)
+    parameters["file_name"] = (file_name + file_extension)
+    host.send_request(uri="receive", parameters=parameters)
 
