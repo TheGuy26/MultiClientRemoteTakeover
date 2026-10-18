@@ -2,7 +2,7 @@ import flet as ft
 from frontend import controls
 from backend.client_management import ClientManagement
 from backend.client import Client
-from backend.commands.FileTransfer import sender
+from backend.commands.FileTransfer import sender, receiver
 
 class Page:
     page: ft.Page
@@ -58,9 +58,9 @@ class Page:
         if self.current_client is None:
             return # update GUI
         if uri == "receive":
-            sender.send(host=self.current_client, **parameters)
+            sender.master_send(host=self.current_client, **parameters)
         else:
-            return
+            receiver.master_receive(host=self.current_client, **parameters)
 
     def add_client(self, ip: str, port: int):
         self.host_list.add(ip=ip, port=port)

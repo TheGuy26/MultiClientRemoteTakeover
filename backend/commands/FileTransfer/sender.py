@@ -11,7 +11,7 @@ def transfer(source_path: str, host: socket.socket):
         host.sendall(file_data + b'<end>')
 
 def check_if_exists(source_path: str) -> bool:
-    file_path = pathlib.Path(source_path)
+    file_path = pathlib.Path(source_path) # add try, except
     if not file_path.is_file():  # Check if the path is a file
         return False
     return True
@@ -25,7 +25,7 @@ def get_extension(source_path: str) -> str:
     file_path = pathlib.Path(source_path)
     return file_path.suffix  # Return file extension
 
-def send(source_path: str, host: Client, destination_path: str, file_name: str):
+def master_send(source_path: str, host: Client, destination_path: str, file_name: str):
     if not check_if_exists(source_path):
         return # update GUI
     file_size, file_extension = get_size(source_path), get_extension(source_path)
@@ -41,4 +41,19 @@ def send(source_path: str, host: Client, destination_path: str, file_name: str):
 
     host.continue_keeping_alive()
     return # update GUI
+
+def client_send(source_path: str, host: socket.socket):
+    if not check_if_exists(source_path=source_path):
+        client_response = CommandResponse(request_id=1, status_code=2,
+                                     body=f"Source path of {source_path} doesn't exist or isn't a file")
+        host.sendall(client_response.dump())
+        return
+    client_response = CommandResponse(request_id=1, status_code=1,
+                                      body=f"{get_size(source_path)};{get_extension(source_path)}")
+    host.sendall(client_response.dump())
+    buffer = 2048
+    master_response = CommandResponse.load(host.recv(buffer))
+    if master_response.status_code == 1:
+        transfer(source_path=source_path, host=host)
+
 

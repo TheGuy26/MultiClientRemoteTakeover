@@ -4,6 +4,8 @@ import os
 import shutil
 
 from backend.commandResponse import CommandResponse
+from backend.commandRequest import CommandRequest
+from backend.client import Client
 
 def load(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
     file_path = pathlib.Path(destination_path + '/' + file_name)
@@ -31,11 +33,27 @@ def precheck(destination_path: str, file_size: int) -> CommandResponse:
         return CommandResponse(request_id=0, status_code=3, body=f"Not enough space on destination directory")
     return CommandResponse(request_id=0, status_code=1, body=f"ok")
 
-def receive(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
+def client_receive(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
     precheck_response = precheck(destination_path=destination_path, file_size=file_size)
     if precheck_response.status_code != 1:
         return precheck_response
     host.sendall(precheck_response.dump())
     return load(destination_path, file_size, file_name, host)
+
+def master_receive(source_path: str, host: Client, destination_path: str, file_name: str):
+    client_precheck_response = host.send_request(uri="send", parameters={"source_path": source_path},
+                                          continue_keeping_alive=False)
+    if client_precheck_response.status_code != 1:
+        return # update GUI
+    seperator = ';'
+    file_info = client_precheck_response.body.split(seperator, maxsplit=1)
+    file_size, file_extension = int(file_info[0]), file_info[-1]
+    master_precheck_response = precheck(destination_path=destination_path, file_size=file_size)
+    host.client_socket.sendall(master_precheck_response.dump())
+    if master_precheck_response.status_code == 1:
+        load(destination_path=destination_path, file_size=file_size,
+             file_name=(file_name + file_extension), host=host.client_socket)
+    host.continue_keeping_alive()
+
 
 
