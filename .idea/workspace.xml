@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Continued working on file transfer command.&#10;Got it to a working state between master to worker. (client)&#10;Need to add: GUI feedback, cross-way transfer.">
-      <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MultiClientRemoteTakeover.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MultiClientRemoteTakeover.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/file_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/client_file_transfer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +30,12 @@
     &quot;assignee&quot;: &quot;TheGuy26&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/TheGuy26/MultiClientRemoteTakeover.git&quot;,
-    &quot;accountId&quot;: &quot;db511ae9-ce91-4bd0-b51e-a161bbf5b9d5&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TheGuy26/MultiClientRemoteTakeover.git",
+    "accountId": "fb965341-f587-4191-b8b7-c67e5869fa72"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -52,21 +47,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.CommandResponse.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.TestJsonConverter.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
-    &quot;Python.page.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.CommandResponse.executor": "Debug",
+    "Python.TestJsonConverter.executor": "Debug",
+    "Python.client.executor": "Run",
+    "Python.client_management.executor": "Run",
+    "Python.page.executor": "Run",
+    "Python.run.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
@@ -78,7 +73,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
+        <option value="bundled-python-sdk-116fdca60d1a-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28539.90" />
       </set>
     </attachedChunks>
   </component>
@@ -330,16 +325,6 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/commands/FileTransfer/sender.py</url>
           <line>10</line>
           <option name="timeStamp" value="46" />
@@ -353,6 +338,21 @@
           <url>file://$PROJECT_DIR$/backend/client.py</url>
           <line>54</line>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/commands/FileTransfer/client_file_transfer.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/client/management.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/jsonLoader.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

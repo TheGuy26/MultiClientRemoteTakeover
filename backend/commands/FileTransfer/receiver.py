@@ -15,8 +15,10 @@ def load(destination_path: str, file_size: int, file_name: str, host: socket.soc
 
     while not done:
         data = host.recv(buffer)
-        if data[-5:] != b'<end>':
-            file_bytes += data
+        file_bytes += data
+        if data[-5:] == b'<end>':
+            del file_bytes[-5:]
+            done = True
 
     try:
         file_path.write_bytes(file_bytes)
