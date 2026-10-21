@@ -49,11 +49,12 @@ class CommandPanel(ft.ExpansionTile):
                 parameters[parameter] = field.value
 
         if not empty_field:
-            self.send_request(self.uri, parameters)
-
             for field in self.fields.values():
                 field: ft.TextField
                 field.value = ""
+
+            self.send_request(self.uri, parameters)
+
 
 class FileTransferCommandPanel(CommandPanel):
     swap_container: ft.Column
@@ -153,3 +154,15 @@ class HostList(ft.ListView):
 
     def remove(self, ip: str):
         pass
+
+class Console(ft.Container):
+    text_control: ft.Text
+    list_view: ft.ListView
+
+    def __init__(self):
+        self.text_control = ft.Text()
+        self.list_view = ft.ListView(controls=[self.text_control], expand=True)
+        super().__init__(content=self.list_view, height=350, bgcolor="#ff8400")
+
+    def set_text(self, text: str):
+        self.text_control.value = text

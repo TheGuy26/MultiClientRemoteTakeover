@@ -13,6 +13,8 @@ class Page:
 
     host_list: controls.HostList
 
+    console: controls.Console
+
     client_management: ClientManagement
     current_client: Client | None
 
@@ -28,6 +30,9 @@ class Page:
 
         self.host_list = controls.HostList(select_client=self.select_client)
 
+        self.console = controls.Console()
+        self.console.set_text("TEST\n\n\n\n\n\n\nTEST\n\n\n\n\n\n\nTEST")
+
         self.client_management = ClientManagement(ip="192.168.1.207", port=8080, add_to_frontend=self.add_client)
         self.current_client = None
 
@@ -42,7 +47,8 @@ class Page:
         self.panel = ft.Row(alignment=ft.MainAxisAlignment.START, vertical_alignment=ft.CrossAxisAlignment.START,
                                expand=True)
 
-        self.panel.controls.extend([ft.Container(content=self.host_list, bgcolor="#1c52a3"), self.command_grid])
+        self.panel.controls.extend([ft.Container(content=self.host_list, bgcolor="#1c52a3"),
+                                    ft.Column(controls=[self.command_grid, self.console], expand=True)])
 
 
 
@@ -58,9 +64,11 @@ class Page:
         if self.current_client is None:
             return # update GUI
         if uri == "receive":
-            sender.master_send(host=self.current_client, **parameters)
+            response = sender.master_send(host=self.current_client, **parameters)
         else:
-            receiver.master_receive(host=self.current_client, **parameters)
+            response = receiver.master_receive(host=self.current_client, **parameters)
+
+        self.console.set_text(response.body)
 
     def add_client(self, ip: str, port: int):
         self.host_list.add(ip=ip, port=port)

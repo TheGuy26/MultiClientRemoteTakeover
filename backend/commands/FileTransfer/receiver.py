@@ -42,23 +42,26 @@ def client_receive(destination_path: str, file_size: int, file_name: str, host: 
     host.sendall(precheck_response.dump())
     return load(destination_path, file_size, file_name, host)
 
-def master_receive(source_path: str, host: Client, destination_path: str, file_name: str):
+def master_receive(source_path: str, host: Client, destination_path: str, file_name: str) -> CommandResponse:
     client_precheck_response = host.send_request(uri="send", parameters={"source_path": source_path},
                                           continue_keeping_alive=False)
     if client_precheck_response.status_code != 1:
-        return # update GUI
+        return client_precheck_response
     seperator = ';'
     file_info = client_precheck_response.body.split(seperator, maxsplit=1)
     file_size, file_extension = int(file_info[0]), file_info[-1]
     master_precheck_response = precheck(destination_path=destination_path, file_size=file_size)
     host.client_socket.sendall(master_precheck_response.dump())
-    if master_precheck_response.status_code == 1:
-        response = load(destination_path=destination_path, file_size=file_size,
-             file_name=(file_name + file_extension), host=host.client_socket)
-        host.client_socket.sendall(response.dump())
+    if master_precheck_response.status_code != 1:
+        return master_precheck_response
+    response = load(destination_path=destination_path, file_size=file_size,
+        file_name=(file_name + file_extension), host=host.client_socket)
+    host.client_socket.sendall(response.dump())
     buffer = 2048
-    client_response = host.client_socket.recv(buffer)
+    host.client_socket.recv(buffer) # Client has to return a response
+
     host.continue_keeping_alive()
+    return response
 
 
 
