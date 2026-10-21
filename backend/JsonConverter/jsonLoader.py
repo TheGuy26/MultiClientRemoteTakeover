@@ -86,7 +86,10 @@ def merge_iterable_values(item_list: list[bytes], seperator: bytes):
             item_list[i:closing_pair_index+1] = [bytes(seperator.join(item_list[i:closing_pair_index+1]))]
 
 def find_closing_pair_index(opener: bytes, closer: bytes, item_list: list[bytes], start_index: int) -> int:
-    closers_to_find = 1
+    portion = item_list[start_index]
+    closers_to_find = (portion.count(opener) - portion.count(closer))
+    if closers_to_find == 0:
+        return start_index
     for i in range(start_index + 1, len(item_list)):
         portion = item_list[i]
         closers_to_find += (portion.count(opener) - portion.count(closer))
