@@ -10,8 +10,8 @@ class FileTransfer:
     def __init__(self, host: socket.socket):
         self.host = host
 
-    def send(self, source_path: str):
-        client_send(source_path=source_path, host=self.host)
+    def send(self, source_path: str) -> CommandResponse:
+        return client_send(source_path=source_path, host=self.host)
 
     #def receive_precheck(self, destination_path: str, file_size: int) -> CommandResponse:
         #return precheck(destination_path=destination_path, file_size=file_size)

@@ -43,6 +43,7 @@ def client_receive(destination_path: str, file_size: int, file_name: str, host: 
     return load(destination_path, file_size, file_name, host)
 
 def master_receive(source_path: str, host: Client, destination_path: str, file_name: str):
+    TEST = {"source_path": source_path}
     client_precheck_response = host.send_request(uri="send", parameters={"source_path": source_path},
                                           continue_keeping_alive=False)
     if client_precheck_response.status_code != 1:
@@ -55,6 +56,8 @@ def master_receive(source_path: str, host: Client, destination_path: str, file_n
     if master_precheck_response.status_code == 1:
         load(destination_path=destination_path, file_size=file_size,
              file_name=(file_name + file_extension), host=host.client_socket)
+    buffer = 2048
+    client_response = host.client_socket.recv(buffer)
     host.continue_keeping_alive()
 
 

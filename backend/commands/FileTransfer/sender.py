@@ -42,12 +42,10 @@ def master_send(source_path: str, host: Client, destination_path: str, file_name
     host.continue_keeping_alive()
     return # update GUI
 
-def client_send(source_path: str, host: socket.socket):
+def client_send(source_path: str, host: socket.socket) -> CommandResponse:
     if not check_if_exists(source_path=source_path):
-        client_response = CommandResponse(request_id=1, status_code=2,
+        return CommandResponse(request_id=1, status_code=2,
                                      body=f"Source path of {source_path} doesn't exist or isn't a file")
-        host.sendall(client_response.dump())
-        return
     client_response = CommandResponse(request_id=1, status_code=1,
                                       body=f"{get_size(source_path)};{get_extension(source_path)}")
     host.sendall(client_response.dump())
@@ -55,5 +53,11 @@ def client_send(source_path: str, host: socket.socket):
     master_response = CommandResponse.load(host.recv(buffer))
     if master_response.status_code == 1:
         transfer(source_path=source_path, host=host)
+        master_response = CommandResponse.load(host.recv(buffer))
+        if master_response.status_code != 1:
+            return CommandResponse(request_id=1, status_code=2, body="Encountered errors at host machine.")
+        return CommandResponse(request_id=1, status_code=1, body="Sent file")
+    return CommandResponse(request_id=1, status_code=2, body="file wasn't transferred do to host problems.")
+
 
 
