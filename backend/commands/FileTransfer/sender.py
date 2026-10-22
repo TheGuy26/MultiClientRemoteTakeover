@@ -1,14 +1,41 @@
 import socket
 import pathlib
+from queue import Queue
+from threading import Thread
 
 from backend.commandResponse import CommandResponse
 from backend.client import Client
 
 def transfer(source_path: str, host: socket.socket):
-        file_path = pathlib.Path(source_path)
-        buffer = 1024
-        file_data = file_path.read_bytes()
-        host.sendall(file_data + b'<end>')
+    queue: Queue[bytes] = Queue()
+    parameters = {"source_path": source_path, "queue": queue}
+    load_data_thread = Thread(target=load_file_data, kwargs=parameters, daemon=True)
+    load_data_thread.start()
+    send_file_data(host=host, queue=queue)
+
+
+def load_file_data(source_path: str, queue: Queue[bytes]):
+    file_path = pathlib.Path(source_path)
+    chuck_size = 2048
+    with file_path.open("rb") as file:
+        is_finished = False
+        while not is_finished:
+            chunk = file.read(chuck_size)
+            if not chunk:
+                is_finished = True
+            else:
+                queue.put(chunk)
+    queue.put(b'<end>')
+
+
+def send_file_data(host: socket.socket, queue: Queue[bytes]):
+    is_finished = False
+    while not is_finished:
+        if not queue.empty():
+            data = queue.get()
+            host.sendall(data)
+            if data == b'<end>':
+                is_finished = True
 
 def check_if_exists(source_path: str) -> bool:
     file_path = pathlib.Path(source_path) # add try, except
@@ -43,10 +70,11 @@ def master_send(source_path: str, host: Client, destination_path: str, file_name
     return transfer_response
 
 def client_send(source_path: str, host: socket.socket) -> CommandResponse:
+    request_id = get_request_id()
     if not check_if_exists(source_path=source_path):
-        return CommandResponse(request_id=1, status_code=2,
+        return CommandResponse(request_id=request_id, status_code=2,
                                      body=f"Source path of {source_path} doesn't exist or isn't a file")
-    client_response = CommandResponse(request_id=1, status_code=1,
+    client_response = CommandResponse(request_id=request_id, status_code=1,
                                       body=f"{get_size(source_path)};{get_extension(source_path)}")
     host.sendall(client_response.dump())
     buffer = 2048
@@ -55,9 +83,12 @@ def client_send(source_path: str, host: socket.socket) -> CommandResponse:
         transfer(source_path=source_path, host=host)
         master_response = CommandResponse.load(host.recv(buffer))
         if master_response.status_code != 1:
-            return CommandResponse(request_id=1, status_code=2, body="Encountered errors at host machine.")
-        return CommandResponse(request_id=1, status_code=1, body="file sent")
-    return CommandResponse(request_id=1, status_code=2, body="file wasn't transferred do to host problems.")
+            return CommandResponse(request_id=request_id, status_code=2, body="Encountered errors at host machine.")
+        return CommandResponse(request_id=request_id, status_code=1, body="file sent")
+    return CommandResponse(request_id=request_id, status_code=2, body="file wasn't transferred do to host problems.")
 
+def get_request_id() -> int:
+    from client.management import get_current_id
+    return get_current_id()
 
 

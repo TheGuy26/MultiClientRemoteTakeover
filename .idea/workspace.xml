@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Continued working on file transfer command - added client to master transfer.&#10;Client commit&#10;Need to add - GUI feedback">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Continued working on file transfer command - added GUI feedback.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/management.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/controls.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,21 +51,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.CommandResponse.executor": "Debug",
-    "Python.TestJsonConverter.executor": "Run",
-    "Python.client.executor": "Run",
-    "Python.client_management.executor": "Run",
-    "Python.page.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.CommandResponse.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.TestJsonConverter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
@@ -299,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792588645652</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Continued working on file transfer command - added GUI feedback.">
+      <option name="closed" value="true" />
+      <created>1792617763340</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1792617763340</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,7 +344,8 @@
     <MESSAGE value="Continued working on file transfer command.&#10;Got it to a working state between master to worker. (client)&#10;Need to add: GUI feedback, cross-way transfer." />
     <MESSAGE value="Fixed an error in JsonLoader.&#10;Fixed an error where a dictionary with one set couldn't be loader. (converted to Json)" />
     <MESSAGE value="Continued working on file transfer command - added client to master transfer.&#10;Client commit&#10;Need to add - GUI feedback" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued working on file transfer command - added client to master transfer.&#10;Client commit&#10;Need to add - GUI feedback" />
+    <MESSAGE value="Continued working on file transfer command - added GUI feedback." />
+    <option name="LAST_COMMIT_MESSAGE" value="Continued working on file transfer command - added GUI feedback." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -350,7 +357,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/commands/FileTransfer/sender.py</url>
-          <line>28</line>
+          <line>55</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -360,7 +367,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/client/management.py</url>
-          <line>30</line>
+          <line>35</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>

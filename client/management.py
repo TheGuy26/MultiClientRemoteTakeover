@@ -1,9 +1,11 @@
 import socket
 
-import commands
+from client import commands
 from backend.api import API
 from backend.commandRequest import CommandRequest
 from backend.commandResponse import CommandResponse
+
+current_request_id = -1
 
 class Management:
     host: socket.socket
@@ -18,6 +20,7 @@ class Management:
         print("Connected successfully")
         self.host = host
         self.api = commands.set_api(self.host)
+        self.current_request_id = -1
         self.listen()
 
     def listen(self):
@@ -28,5 +31,11 @@ class Management:
                 self.host.sendall(b"I'm alive")
                 continue
             command_request = CommandRequest.load(message)
+            global current_request_id
+            current_request_id = command_request.id
             command_response = self.api.respond(command_request)
             self.host.sendall(command_response.dump())
+
+
+def get_current_id():
+    return current_request_id
