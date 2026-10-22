@@ -16,7 +16,7 @@ def transfer(source_path: str, host: socket.socket):
 
 def load_file_data(source_path: str, queue: Queue[bytes]):
     file_path = pathlib.Path(source_path)
-    chuck_size = 2048
+    chuck_size = 8192
     with file_path.open("rb") as file:
         is_finished = False
         while not is_finished:

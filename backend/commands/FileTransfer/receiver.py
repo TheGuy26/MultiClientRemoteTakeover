@@ -9,7 +9,7 @@ from backend.client import Client
 
 def load(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
     file_path = pathlib.Path(destination_path + '/' + file_name)
-    buffer = 2048
+    buffer = 8192
     done = False
     file_bytes = bytearray()
 
