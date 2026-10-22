@@ -53,6 +53,7 @@ def convert_dict(dictionary: bytes) -> dict:
     seperator = b','
     encoded_items = dictionary[1:-1].split(seperator)
     merge_iterable_values(item_list=encoded_items, seperator=seperator)
+    merge_strings(item_list=encoded_items, seperator=seperator)
     for item in encoded_items:
         item = item.strip() # Remove any whitespace
         separated_item = item.split(b': ', maxsplit=1)
@@ -83,7 +84,7 @@ def merge_iterable_values(item_list: list[bytes], seperator: bytes):
                 opener = b'['
                 closer = b']'
             closing_pair_index = find_closing_pair_index(opener=opener, closer=closer, item_list=item_list, start_index=i)
-            item_list[i:closing_pair_index+1] = [bytes(seperator.join(item_list[i:closing_pair_index+1]))]
+            item_list[i:closing_pair_index+1] = [bytes(seperator.join(item_list[i:closing_pair_index+1]))] # Merge items
 
 def find_closing_pair_index(opener: bytes, closer: bytes, item_list: list[bytes], start_index: int) -> int:
     portion = item_list[start_index]
@@ -104,5 +105,25 @@ def is_first_char(decoded_string: str, char: str, other_char: str) -> bool:
         elif current_char == other_char:
             return False
     return  False
+
+def merge_strings(item_list: list[bytes], seperator: bytes):
+    for i in range(len(item_list)):
+        if i >= len(item_list):
+            break
+        portion = item_list[i]
+        value = portion.split(b':', maxsplit=1)[-1].strip()
+        first_char = value[:1]
+        last_char = value[-1:]
+        if value[:1] == b'"' and value[-1:] != b'"': # Uses slicing so won't return an integer
+            closing_quote_index = find_closing_quote_index(item_list=item_list, start_index=i)
+            item_list[i:closing_quote_index + 1] = [bytes(seperator.join(item_list[i:closing_quote_index + 1]))] # Merge items
+
+
+def find_closing_quote_index(item_list: list[bytes], start_index: int) -> int:
+    for i in range(start_index + 1, len(item_list)):
+        portion = item_list[i]
+        if b'"' in portion:
+            return i
+    return len(item_list) - 1
 
 
