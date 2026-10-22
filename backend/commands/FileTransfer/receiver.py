@@ -1,11 +1,11 @@
 import socket
 import pathlib
-import os
 import shutil
 
 from backend.commandResponse import CommandResponse
 from backend.commandRequest import CommandRequest
 from backend.client import Client
+from backend.commands.commands import get_current_id
 
 def load(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
     file_path = pathlib.Path(destination_path + '/' + file_name)
@@ -62,8 +62,4 @@ def master_receive(source_path: str, host: Client, destination_path: str, file_n
 
     host.continue_keeping_alive()
     return response
-
-def get_current_id() -> int:
-    from client.management import get_current_id
-    return get_current_id()
 

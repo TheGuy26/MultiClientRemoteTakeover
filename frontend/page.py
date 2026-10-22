@@ -23,7 +23,7 @@ class Page:
         self.panel: ft.Row | None = None
 
         self.commands = [controls.FileTransferCommandPanel(send_request=self.send_file_transfer_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST2", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="Run Command", uri="run_command", fields={"command": "command"}, send_request=self.send_request), # parameter_name: title
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request),
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request)]
         self.command_grid = ft.ResponsiveRow(columns=8, spacing=10, controls=self.commands, expand=True)
@@ -58,7 +58,8 @@ class Page:
         self.current_client = self.client_management.get_client(ip)
 
     def send_request(self, uri: str, parameters: dict):
-        pass
+        response = self.current_client.send_request(uri=uri, parameters=parameters)
+        self.console.set_text(response.body)
 
     def send_file_transfer_request(self, uri:str, parameters: dict):
         if self.current_client is None:

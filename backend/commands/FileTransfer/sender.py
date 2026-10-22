@@ -5,6 +5,7 @@ from threading import Thread
 
 from backend.commandResponse import CommandResponse
 from backend.client import Client
+from backend.commands.commands import get_current_id
 
 def transfer(source_path: str, host: socket.socket):
     queue: Queue[bytes] = Queue()
@@ -70,7 +71,7 @@ def master_send(source_path: str, host: Client, destination_path: str, file_name
     return transfer_response
 
 def client_send(source_path: str, host: socket.socket) -> CommandResponse:
-    request_id = get_request_id()
+    request_id = get_current_id()
     if not check_if_exists(source_path=source_path):
         return CommandResponse(request_id=request_id, status_code=2,
                                      body=f"Source path of {source_path} doesn't exist or isn't a file")
@@ -87,8 +88,6 @@ def client_send(source_path: str, host: socket.socket) -> CommandResponse:
         return CommandResponse(request_id=request_id, status_code=1, body="file sent")
     return CommandResponse(request_id=request_id, status_code=2, body="file wasn't transferred do to host problems.")
 
-def get_request_id() -> int:
-    from client.management import get_current_id
-    return get_current_id()
+
 
 

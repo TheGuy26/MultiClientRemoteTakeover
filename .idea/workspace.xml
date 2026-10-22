@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Continued working on file transfer command - added GUI feedback.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Changed file transfer and receive chunks.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/management.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -305,7 +303,23 @@
       <option name="project" value="LOCAL" />
       <updated>1792617763340</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Implemented more efficient file transfer algorithm and fixed client request_id issue.">
+      <option name="closed" value="true" />
+      <created>1792675299414</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1792675299414</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Changed file transfer and receive chunks.">
+      <option name="closed" value="true" />
+      <created>1792678594497</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1792678594497</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,8 +334,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Json converter, and started working on CommandRequest class." />
-    <MESSAGE value="- Added JsonLoader.(*ongoing work)&#10;- Added load func to CommandRequest.&#10;- Placed Json dumper and loader in JsonConverter package." />
     <MESSAGE value="Fixed JsonLoader.py" />
     <MESSAGE value="Added CommandResponse class" />
     <MESSAGE value="Added endpoint class" />
@@ -345,7 +357,9 @@
     <MESSAGE value="Fixed an error in JsonLoader.&#10;Fixed an error where a dictionary with one set couldn't be loader. (converted to Json)" />
     <MESSAGE value="Continued working on file transfer command - added client to master transfer.&#10;Client commit&#10;Need to add - GUI feedback" />
     <MESSAGE value="Continued working on file transfer command - added GUI feedback." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued working on file transfer command - added GUI feedback." />
+    <MESSAGE value="Implemented more efficient file transfer algorithm and fixed client request_id issue." />
+    <MESSAGE value="Changed file transfer and receive chunks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed file transfer and receive chunks." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
