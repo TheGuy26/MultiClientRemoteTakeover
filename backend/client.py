@@ -31,8 +31,6 @@ class Client:
     def send_request(self, uri: str, parameters: dict | None = None, continue_keeping_alive: bool = True) -> CommandResponse:
         self.can_send_request.wait()
         self.should_keep_alive.clear()
-        if not parameters:
-            parameters = dict()
         command_request = CommandRequest(uri=uri, parameters=parameters, id=self.current_id)
         self.client_socket.sendall(command_request.dump())
         buffer = 8192 # Add BHP
