@@ -32,7 +32,8 @@ def control(action_str: str):
         else:
             invalid_actions.append(action)
 
-    body = f"current location - {mouse.position}"
+    horizontal, vertical = mouse.position
+    body = f"current location - ({round(horizontal)}, {round(vertical)})"
     if invalid_actions:
         body += "\ninvalid actions:\n" + "\n".join(invalid_actions)
 
