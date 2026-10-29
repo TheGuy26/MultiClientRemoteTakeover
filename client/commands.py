@@ -4,6 +4,7 @@ from backend.endpoint import Endpoint
 from backend.api import API
 from backend.commands.FileTransfer.client_file_transfer import FileTransfer
 from backend.commands.screenshot import ClientScreenshot
+from backend.commands.keyboard_control import press_keys, listen
 from backend.commands import commands
 
 def set_api(host: socket.socket) -> API:
@@ -17,7 +18,9 @@ def set_api(host: socket.socket) -> API:
         Endpoint(uri="receive", endpoint=file_transfer.receive, basic=False),
         Endpoint(uri="send", endpoint=file_transfer.send, basic=False),
         Endpoint(uri="run_command", endpoint=commands.run_command, basic=False),
-        Endpoint(uri="screenshot", endpoint=screenshot.client_send)
+        Endpoint(uri="screenshot", endpoint=screenshot.client_send),
+        Endpoint(uri="key_press", endpoint=press_keys, basic=False),
+        Endpoint(uri="key_listen", endpoint=listen, basic=False)
     ]
 
     # API:

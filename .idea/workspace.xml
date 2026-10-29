@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added screenshot command.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Fixed screenshot command.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/keyboard_control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/commands/screenshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/screenshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
     </list>
@@ -51,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.CommandResponse.executor": "Debug",
-    "Python.TestJsonConverter.executor": "Debug",
-    "Python.client.executor": "Run",
-    "Python.client_management.executor": "Run",
-    "Python.jsonLoader.executor": "Debug",
-    "Python.page.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.CommandResponse.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.TestJsonConverter.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.jsonLoader.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.page.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
@@ -354,7 +354,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793290520319</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed screenshot command.">
+      <option name="closed" value="true" />
+      <created>1793293729681</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1793293729681</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -369,7 +377,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed CommandResponse body typing" />
     <MESSAGE value="Added Client class" />
     <MESSAGE value="Added ClientManagement class" />
     <MESSAGE value="General Changes" />
@@ -394,7 +401,8 @@
     <MESSAGE value="Fixed an error in JsonLoader.&#10;Fixed an error where a sting with a comma couldn't be loader. (converted to Json)" />
     <MESSAGE value="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables." />
     <MESSAGE value="Added screenshot command." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added screenshot command." />
+    <MESSAGE value="Fixed screenshot command." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed screenshot command." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -418,11 +426,6 @@
           <url>file://$PROJECT_DIR$/client/management.py</url>
           <line>33</line>
           <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/commands/commands.py</url>

@@ -26,8 +26,9 @@ class Page:
         self.commands = [controls.FileTransferCommandPanel(send_request=self.send_file_transfer_request),
                          controls.CommandPanel(icon=ft.Icons.TERMINAL, name="Run Command", uri="run_command", fields={"command": "command"}, send_request=self.send_request), # parameter_name: title
                          controls.CommandPanel(icon=ft.Icons.SCREENSHOT_MONITOR, name="Screenshot", uri="screenshot", fields={"destination_path": "destination path", "file_name": "name"}, send_request=self.send_screenshot_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request)]
-        self.command_grid = ft.ResponsiveRow(columns=8, spacing=10, controls=self.commands, expand=True)
+                         controls.CommandPanel(icon=ft.Icons.KEYBOARD, name="Key Press", uri="key_press", fields={"keys_str": "key_list (separate with space)"}, send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.HEARING_ROUNDED, name="Key Listen", uri="key_listen", fields={"timeout": "timeout"}, send_request=self.send_request)]
+        self.command_grid = ft.ResponsiveRow(columns=12, spacing=10, controls=self.commands, expand=True)
 
         self.host_list = controls.HostList(select_client=self.select_client)
 
