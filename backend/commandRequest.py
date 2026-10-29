@@ -3,10 +3,10 @@ from backend.JsonConverter import jsonLoader
 
 class CommandRequest:
     uri: str
-    parameters: dict
+    parameters: dict | None
     id: int
 
-    def __init__(self, uri: str, parameters: dict, id: int = 0):
+    def __init__(self, uri: str, parameters: dict | None, id: int = 0):
         self.uri = uri
         self.parameters = parameters
         self.id = id
@@ -17,7 +17,7 @@ class CommandRequest:
     @staticmethod
     def load(command_request_json: bytes) -> "CommandRequest":
         decoded_dict = jsonLoader.convert_dict(command_request_json)
-        attributes = {"uri": str, "parameters": dict, "id": int}
+        attributes = {"uri": str, "parameters": dict | None, "id": int}
         decoded_values = dict()
         for attr, attr_type in attributes.items():
             if attr in decoded_dict and isinstance(decoded_dict[attr], attr_type):
