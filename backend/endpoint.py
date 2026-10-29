@@ -15,7 +15,7 @@ class Endpoint:
 
     def Call(self, request: CommandRequest) -> CommandResponse:
         if self.basic:
-            return self.endpoint(request)
+            return self.endpoint()
         return self.endpoint(**request.parameters)
 
 
