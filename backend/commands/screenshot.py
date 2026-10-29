@@ -34,14 +34,16 @@ class ClientScreenshot:
         return CommandResponse(request_id=request_id, status_code=2, body="screenshot wasn't transferred do to host problems.")
 
 def master_receive(host: Client, destination_path: str, file_name: str):
-    host.send_request(uri="screenshot", continue_keeping_alive=False)
-    buffer = 2048
     seperator = ';'
-    file_size, width, height = CommandResponse.load(host.client_socket.recv(buffer)).body.split(seperator, maxsplit= 2)
-    dimensions = (int(height), int(width))
+    buffer = 2048
+    file_size, width, height = host.send_request(uri="screenshot", continue_keeping_alive=False).body.split(seperator, maxsplit= 2)
+    dimensions = (int(width), int(height))
     master_precheck_response = precheck(destination_path=destination_path, file_size=int(file_size))
+    host.client_socket.sendall(master_precheck_response.dump())
     if master_precheck_response.status_code != 1:
+        host.client_socket.recv(buffer)  # Client has to return a response
         return master_precheck_response
+
     response = load_image(dimensions=dimensions, destination_path=destination_path,
                           file_name=file_name + '.png', host=host.client_socket)
     host.client_socket.sendall(response.dump())
