@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Fixed screenshot command.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added key listen and key press commands.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/commands/keyboard_control.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/mouse_control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
@@ -69,6 +69,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\commands" />
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend\JsonConverter" />
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover" />
       <recent name="C:\Users\guyya\Documents\Projects\MultiClientRemoteTakeover\backend" />
@@ -362,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793293729681</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added key listen and key press commands.">
+      <option name="closed" value="true" />
+      <created>1793301074143</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1793301074143</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,7 +386,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Client class" />
     <MESSAGE value="Added ClientManagement class" />
     <MESSAGE value="General Changes" />
     <MESSAGE value="Started working on GUI&#10;working on command control for GUI" />
@@ -402,7 +410,8 @@
     <MESSAGE value="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables." />
     <MESSAGE value="Added screenshot command." />
     <MESSAGE value="Fixed screenshot command." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed screenshot command." />
+    <MESSAGE value="Added key listen and key press commands." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added key listen and key press commands." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
