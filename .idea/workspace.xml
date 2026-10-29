@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Changed file transfer and receive chunks.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/commands/commands.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/commands/screenshot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands/FileTransfer/receiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +57,10 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.CommandResponse.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.TestJsonConverter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TestJsonConverter.executor&quot;: &quot;Debug&quot;,
     &quot;Python.client.executor&quot;: &quot;Run&quot;,
     &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.jsonLoader.executor&quot;: &quot;Debug&quot;,
     &quot;Python.page.executor&quot;: &quot;Run&quot;,
     &quot;Python.run.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -319,7 +324,31 @@
       <option name="project" value="LOCAL" />
       <updated>1792678594497</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added run_command.">
+      <option name="closed" value="true" />
+      <created>1792680907569</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1792680907569</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fixed an error in JsonLoader.&#10;Fixed an error where a sting with a comma couldn't be loader. (converted to Json)">
+      <option name="closed" value="true" />
+      <created>1792685812421</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1792685812421</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables.">
+      <option name="closed" value="true" />
+      <created>1792686876006</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1792686876006</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,9 +363,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed JsonLoader.py" />
-    <MESSAGE value="Added CommandResponse class" />
-    <MESSAGE value="Added endpoint class" />
     <MESSAGE value="Added API class" />
     <MESSAGE value="Fixed CommandResponse body typing" />
     <MESSAGE value="Added Client class" />
@@ -359,7 +385,10 @@
     <MESSAGE value="Continued working on file transfer command - added GUI feedback." />
     <MESSAGE value="Implemented more efficient file transfer algorithm and fixed client request_id issue." />
     <MESSAGE value="Changed file transfer and receive chunks." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed file transfer and receive chunks." />
+    <MESSAGE value="Added run_command." />
+    <MESSAGE value="Fixed an error in JsonLoader.&#10;Fixed an error where a sting with a comma couldn't be loader. (converted to Json)" />
+    <MESSAGE value="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed run_command issues.&#10;Fixed:&#10;1. Didn't return error messages.&#10;2. Wasn't able to use command with variables." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -371,18 +400,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/commands/FileTransfer/sender.py</url>
-          <line>55</line>
+          <line>56</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/client.py</url>
-          <line>54</line>
+          <line>56</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/client/management.py</url>
-          <line>35</line>
+          <line>33</line>
           <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/commands/commands.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

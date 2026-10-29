@@ -7,7 +7,7 @@ from backend.commandRequest import CommandRequest
 from backend.client import Client
 from backend.commands.commands import get_current_id
 
-def load(destination_path: str, file_size: int, file_name: str, host: socket.socket) -> CommandResponse:
+def load(destination_path: str, file_name: str, host: socket.socket) -> CommandResponse:
     file_path = pathlib.Path(destination_path + '/' + file_name)
     buffer = 8192
     done = False
@@ -54,7 +54,7 @@ def master_receive(source_path: str, host: Client, destination_path: str, file_n
     host.client_socket.sendall(master_precheck_response.dump())
     if master_precheck_response.status_code != 1:
         return master_precheck_response
-    response = load(destination_path=destination_path, file_size=file_size,
+    response = load(destination_path=destination_path,
         file_name=(file_name + file_extension), host=host.client_socket)
     host.client_socket.sendall(response.dump())
     buffer = 2048

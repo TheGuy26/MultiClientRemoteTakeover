@@ -3,6 +3,7 @@ from frontend import controls
 from backend.client_management import ClientManagement
 from backend.client import Client
 from backend.commands.FileTransfer import sender, receiver
+from backend.commands.screenshot import master_receive
 
 class Page:
     page: ft.Page
@@ -23,8 +24,8 @@ class Page:
         self.panel: ft.Row | None = None
 
         self.commands = [controls.FileTransferCommandPanel(send_request=self.send_file_transfer_request),
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="Run Command", uri="run_command", fields={"command": "command"}, send_request=self.send_request), # parameter_name: title
-                         controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request),
+                         controls.CommandPanel(icon=ft.Icons.TERMINAL, name="Run Command", uri="run_command", fields={"command": "command"}, send_request=self.send_request), # parameter_name: title
+                         controls.CommandPanel(icon=ft.Icons.SCREENSHOT_MONITOR, name="Screenshot", uri="screenshot", fields={"destination_path": "destination path", "file_name": "name"}, send_request=self.send_request),
                          controls.CommandPanel(icon=ft.Icons.PLAY_CIRCLE, name="TEST3", uri="TEST", fields={"first": "first", "second": "second"}, send_request=self.send_request)]
         self.command_grid = ft.ResponsiveRow(columns=8, spacing=10, controls=self.commands, expand=True)
 
@@ -70,6 +71,9 @@ class Page:
             response = receiver.master_receive(host=self.current_client, **parameters)
 
         self.console.set_text(response.body)
+
+    def send_screenshot_request(self, uri: str, parameters: dict):
+        master_receive(host=self.current_client, **parameters)
 
     def add_client(self, ip: str, port: int):
         self.host_list.add(ip=ip, port=port)
