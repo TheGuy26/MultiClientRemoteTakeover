@@ -4,19 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added key listen and key press commands.">
+    <list default="true" id="dbf5fa4c-10f1-4765-9d60-c0e8209b8e5a" name="Changes" comment="Added mouse control command.">
       <change afterPath="$PROJECT_DIR$/backend/JsonConverter/TestJsonConverter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/commands/mouse_control.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJsonConverter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/client_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/client_management.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/controls.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/page.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/styling.py" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/styling.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DBNavigator.Project.Workspace.Settings">
+    <assistant-settings>
+      <credential-settings>
+        <credentials />
+      </credential-settings>
+      <profile-settings>
+        <profiles />
+      </profile-settings>
+      <mcp-server-settings>
+        <workspace-integration value="false" />
+        <mcp-servers />
+        <mcp-tool-approvals />
+      </mcp-server-settings>
+    </assistant-settings>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -58,13 +76,14 @@
     &quot;Python.TestJsonConverter.executor&quot;: &quot;Debug&quot;,
     &quot;Python.client.executor&quot;: &quot;Run&quot;,
     &quot;Python.client_management.executor&quot;: &quot;Run&quot;,
+    &quot;Python.database.executor&quot;: &quot;Debug&quot;,
     &quot;Python.jsonLoader.executor&quot;: &quot;Debug&quot;,
     &quot;Python.page.executor&quot;: &quot;Run&quot;,
     &quot;Python.run.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -371,7 +390,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793301074143</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Added mouse control command.">
+      <option name="closed" value="true" />
+      <created>1793308980197</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1793308980197</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,7 +413,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added ClientManagement class" />
     <MESSAGE value="General Changes" />
     <MESSAGE value="Started working on GUI&#10;working on command control for GUI" />
     <MESSAGE value="Organized to packages and fixed imports" />
@@ -411,7 +437,8 @@
     <MESSAGE value="Added screenshot command." />
     <MESSAGE value="Fixed screenshot command." />
     <MESSAGE value="Added key listen and key press commands." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added key listen and key press commands." />
+    <MESSAGE value="Added mouse control command." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mouse control command." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -428,7 +455,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/backend/client.py</url>
-          <line>54</line>
+          <line>67</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -450,6 +477,26 @@
           <url>file://$PROJECT_DIR$/backend/commands/screenshot.py</url>
           <line>66</line>
           <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/database.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/frontend/page.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/frontend/page.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/frontend/controls.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

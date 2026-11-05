@@ -1,5 +1,6 @@
 import flet as ft
 from frontend import controls
+import frontend.styling as styling
 from backend.client_management import ClientManagement
 from backend.client import Client
 from backend.commands.FileTransfer import sender, receiver
@@ -34,9 +35,8 @@ class Page:
         self.host_list = controls.HostList(select_client=self.select_client)
 
         self.console = controls.Console()
-        self.console.set_text("TEST\n\n\n\n\n\n\nTEST\n\n\n\n\n\n\nTEST")
 
-        self.client_management = ClientManagement(ip="192.168.1.207", port=8080, add_to_frontend=self.add_client)
+        self.client_management = ClientManagement(ip="192.168.1.207", port=8081, add_to_frontend=self.add_client, disable_client_gui=self.disable_client)
         self.current_client = None
 
         ft.run(main=self.main)
@@ -45,12 +45,14 @@ class Page:
     async def main(self, page: ft.Page):
         self.page: ft.Page = page
         self.page.title = "Multi Client Remote Takeover"
+        self.page.bgcolor = styling.page_bg_hex
+        self.page.theme = styling.page_theme
         self.page.vertical_alignment = ft.MainAxisAlignment.START
         self.page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
         self.panel = ft.Row(alignment=ft.MainAxisAlignment.START, vertical_alignment=ft.CrossAxisAlignment.START,
                                expand=True)
 
-        self.panel.controls.extend([ft.Container(content=self.host_list, bgcolor="#1c52a3"),
+        self.panel.controls.extend([ft.Container(content=self.host_list, bgcolor=styling.panel_bg_hex, border_radius=5, padding=5),
                                     ft.Column(controls=[self.command_grid, self.console], expand=True)])
 
 
@@ -59,16 +61,19 @@ class Page:
 
     def select_client(self, ip: str):
         self.current_client = self.client_management.get_client(ip)
+        self.host_list.update_selected_client(ip=ip)
 
     def send_request(self, uri: str, parameters: dict):
         if self.current_client is None:
-            return # update GUI
+            self.console.set_text("No client is selected")
+            return
         response = self.current_client.send_request(uri=uri, parameters=parameters)
         self.console.set_text(response.body)
 
     def send_file_transfer_request(self, uri:str, parameters: dict):
         if self.current_client is None:
-            return # update GUI
+            self.console.set_text("No client is selected")
+            return
         if uri == "receive":
             response = sender.master_send(host=self.current_client, **parameters)
         else:
@@ -78,10 +83,15 @@ class Page:
 
     def send_screenshot_request(self, uri: str, parameters: dict):
         if self.current_client is None:
-            return # update GUI
+            self.console.set_text("No client is selected")
+            return
         response = master_receive(host=self.current_client, **parameters)
         self.console.set_text(response.body)
 
     def add_client(self, ip: str, port: int):
         self.host_list.add(ip=ip, port=port)
         self.page.update()
+
+    def disable_client(self, ip: str):
+        self.host_list.disable_client(ip=ip)
+        self.current_client = None
