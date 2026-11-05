@@ -40,7 +40,7 @@ def client_receive(destination_path: str, file_size: int, file_name: str, host: 
     if precheck_response.status_code != 1:
         return precheck_response
     host.sendall(precheck_response.dump())
-    return load(destination_path, file_size, file_name, host)
+    return load(destination_path, file_name, host)
 
 def master_receive(source_path: str, host: Client, destination_path: str, file_name: str) -> CommandResponse:
     client_precheck_response = host.send_request(uri="send", parameters={"source_path": source_path},
