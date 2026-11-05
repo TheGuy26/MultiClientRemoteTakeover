@@ -1,8 +1,11 @@
 import time
 import socket
 from threading import Thread, Event
+from typing import Callable
+
 from backend.commandRequest import CommandRequest
 from backend.commandResponse import CommandResponse
+from backend.database import Database
 
 
 class Client:
@@ -15,7 +18,10 @@ class Client:
     is_alive: bool = True
     running_thread: Thread
 
-    def __init__(self, client_socket: socket.socket):
+    database: Database
+    update_gui: Callable
+
+    def __init__(self, client_socket: socket.socket, database: Database, update_gui: Callable):
         client_address = client_socket.getpeername()
         self.ip = client_address[0]
         self.port = client_address[1]
@@ -28,6 +34,9 @@ class Client:
         self.running_thread = Thread(target=self.keep_alive, daemon=False)
         self.running_thread.start()
 
+        self.database = database
+        self.update_gui = update_gui
+
     def send_request(self, uri: str, parameters: dict | None = None, continue_keeping_alive: bool = True) -> CommandResponse:
         self.can_send_request.wait()
         self.should_keep_alive.clear()
@@ -38,20 +47,24 @@ class Client:
         self.current_id += 1
         if continue_keeping_alive:
             self.should_keep_alive.set()
-        return CommandResponse.load(encoded_response)
+
+        command_response = CommandResponse.load(encoded_response)
+        self.database.insert_request(request=command_request, response=command_response)
+        return command_response
 
 
     def keep_alive(self):
         while True:
             self.should_keep_alive.wait()
             self.can_send_request.clear()
-            self.client_socket.sendall(b'Is alive?')
+
             try:
+                self.client_socket.sendall(b'Is alive?')
                 self.client_socket.settimeout(25.0)
                 message = self.client_socket.recv(1024)
-            except socket.timeout | ConnectionError:
+            except (socket.timeout, ConnectionError, ConnectionAbortedError):
                 self.is_alive = False
-                #Update GUI
+                self.update_gui(ip=self.ip)
                 self.client_socket.close()
                 break
 
